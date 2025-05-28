@@ -6,15 +6,18 @@ import styles from './page.module.css';
 export default function LandingPage() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
     });
     setSubmitted(true);
+    setLoading(false);
   };
 
   return (
@@ -23,7 +26,7 @@ export default function LandingPage() {
         <img src="/logooo.png" alt="Logo" className={styles.logo} />
         <h1 className={styles.title}>Coming Soon</h1>
         <p className={styles.description}>
-Discover insights about yourself through the power of AI. Bobee helps you reflect, grow, and understand the person behind the words. Be the first to experience it.
+          Discover insights about yourself through the power of AI. Bobee helps you reflect, grow, and understand the person behind the words. Be the first to experience it.
         </p>
         {submitted ? (
           <p className={styles.success}>Thanks for subscribing!</p>
@@ -37,8 +40,12 @@ Discover insights about yourself through the power of AI. Bobee helps you reflec
               required
               className={styles.input}
             />
-            <button type="submit" className={styles.button}>
-              Notify Me
+            <button
+              type="submit"
+              className={styles.button}
+              disabled={loading}
+            >
+              {loading ? 'Loading...' : 'Notify Me'}
             </button>
           </form>
         )}
