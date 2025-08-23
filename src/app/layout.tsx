@@ -26,6 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <footer style={{textAlign:'center', padding:'30px 16px', fontSize:'12px', color:'#888'}}>
+          <a href="/privacy" style={{color:'#aaa', textDecoration:'none'}}>Privacy Policy</a>
+        </footer>
       </body>
     </html>
   );
