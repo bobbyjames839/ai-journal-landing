@@ -1,4 +1,31 @@
-/* Basic styling consistent with landing card aesthetic */
+/* Privacy page styles */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:#212121;
+  color:#f4f4f4;
+  padding:40px 20px 60px 20px;
+}
+
+.content {
+  max-width: 800px;
+  width:100%;
+  margin:0 auto;
+  background:#0f1010;
+  padding:40px 48px;
+  border-radius:16px;
+  box-shadow:0 0 10px rgb(89 89 89);
+  line-height:1.5;
+}
+
+.content h1 { font-size:2rem; margin:0 0 1rem; }
+.content h2 { margin-top:2rem; font-size:1.25rem; color:#ffffff; }
+.content p, .content li { color:#ccc; font-size:0.95rem; }
+.content a { color:#71aaff; text-decoration:none; }
+.content a:hover { text-decoration:underline; }
+.backLink { margin-top:32px; display:inline-block; color:#71aaff; text-decoration:none; font-size:0.9rem; }
+.backLink:hover { text-decoration:underline; }/* Basic styling consistent with landing card aesthetic */
 .wrapper {
   min-height: 100vh;
   display: flex;

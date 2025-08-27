@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -25,9 +26,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        <footer style={{textAlign:'center', padding:'30px 16px', fontSize:'12px', color:'#888'}}>
-          © {new Date().getFullYear()} Bobee
+        <header style={{
+          position:'sticky', top:0, zIndex:50, backdropFilter:'blur(16px)', WebkitBackdropFilter:'blur(16px)',
+          background:'linear-gradient(rgba(15,17,18,0.72), rgba(15,17,18,0.55))',
+          borderBottom:'1px solid var(--color-border)',
+        }}>
+          <nav className="container" style={{display:'flex', alignItems:'center', gap:'28px', padding:'14px 0'}}>
+            <Link href="/" style={{fontSize:'1.05rem', fontWeight:600, letterSpacing:'.5px'}}>Bobee</Link>
+            <div style={{display:'flex', gap:'20px', fontSize:'.9rem'}}>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/support">Support</Link>
+            </div>
+            <div style={{marginLeft:'auto'}}>
+              <a href="mailto:contact@bobee.co.uk" className="accent-btn" style={{fontSize:'.8rem', padding:'8px 14px'}}>Contact</a>
+            </div>
+          </nav>
+        </header>
+        <div style={{minHeight:'calc(100vh - 120px)'}}>
+          {children}
+        </div>
+        <footer style={{textAlign:'center', padding:'40px 16px', fontSize:'12px', color:'var(--color-text-faint)'}}>
+          <div className="container" style={{display:'flex', flexDirection:'column', gap:'6px'}}>
+            <span>© {new Date().getFullYear()} Bobee • All rights reserved.</span>
+            <span style={{fontSize:'11px'}}>Built with Next.js • Design tokens demo</span>
+          </div>
         </footer>
       </body>
     </html>
