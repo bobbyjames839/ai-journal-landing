@@ -171,8 +171,8 @@
   z-index: 2;
   height: 90%;
   width: unset;
-  border-radius: 20px;
-  border: 9px solid rgb(50, 50, 50);
+  border-radius: 60px;
+  border: 11px solid rgb(67, 68, 92);
   box-shadow:
     0 10px 30px rgba(0,0,0,0.18),        
     0 0 60px rgba(99,102,241,0.12);     
