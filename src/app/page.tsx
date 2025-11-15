@@ -7,11 +7,9 @@ import logo from '../images/logo.png';
 import imageBottom from '../images/bottom.png';
 import imageMiddle from '../images/middle.png';
 import imageTop from '../images/top.png';
+import qrCode from '../images/qr-code.png';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,55 +18,19 @@ export default function Home() {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setStatus('loading');
-    setMessage('');
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await res.json();
-      if (!res.ok || data.error) {
-        setStatus('error');
-        setMessage(data.error || 'Something went wrong');
-      } else {
-        setStatus('success');
-        setMessage(data.message || 'You are on the list!');
-        setEmail('');
-      }
-    } catch {
-      setStatus('error');
-      setMessage('Network error');
-    }
-  };
-
   return (
   <div className={`${styles.main} ${mounted ? styles.ready : ''}`}>
       <span className={styles.wave} aria-hidden="true" />
       <Image src={logo} alt="Logo" className={styles.logo} />
       <div className={styles.left}>
         <h1 className={styles.title}>Bobee</h1>
-        <p className={styles.description}>Join the waitlist to get early access to the AI journaling experience.</p>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <input
-            type="email"
-            className={styles.input}
-            placeholder="Enter your email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            aria-label="Email address"
-          />
-          <button type="submit" className={styles.button} disabled={status==='loading'}>
-            {status === 'loading' ? 'Subscribing...' : 'Join Waitlist'}
-          </button>
-        </form>
-        {status === 'success' && <div className={styles.success}>{message}</div>}
-        {status === 'error' && <div className={styles.error}>{message}</div>}
+        <p className={styles.description}>Your AI journaling experience. Download now on the AppStore</p>
+        <Image src={qrCode} alt="QR Code" className={styles.qrCode} />
+
+        <a href="https://apps.apple.com/us/app/bobee/id6751124802?itscg=30200&itsct=apps_box_badge&mttnsubad=6751124802" className={styles.appStoreLink}>
+        <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us?releaseDate=1756425600" alt="Download on the App Store" style={{width: '200px', height: '82px', verticalAlign: 'middle', objectFit: 'contain'}} />
+        </a>
+    
       </div>
 
       <div className={styles.right}>

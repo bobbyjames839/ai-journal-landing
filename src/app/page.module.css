@@ -42,11 +42,12 @@
 }
 
 .logo {
-    height: 60px;
+    height: 70px;
     position: absolute;
     top: 10px;
     left: 10px;
     width: unset;
+    z-index: 10;
 }
 
 .wave {
@@ -82,7 +83,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     width: 50%;
     flex-shrink: none;
     height: 100%;
@@ -91,7 +92,6 @@
 }
 
 .title {
-    margin-top: 45%;
     font-size: 70px;
     color: var(--color-blue);
     margin-bottom: -10px;
@@ -100,41 +100,21 @@
 .description {
     font-size: 16px;
     color: var(--color-darkerblue);
+    margin-bottom: 24px;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    gap: 8px;
-    margin: 20px 0;
+.appStoreLink {
+    display: inline-block;
 }
 
-.input {
-    padding: 10px;
-    border-radius: 3px;
-    font-size: 14px;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid var(--color-border);
-    transition: .6s;
-}
-
-.input:focus {
-    background-color: rgb(236, 240, 252);
-}
-
-.button {
-    border: none;
-    background-color: var(--color-blue);
-    color: white;
-    padding: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color .3s;
-    font-size: 16px;
-    font-weight: 600;
+.qrCode {
+    width: 340px;
+    height: 340px;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+    background: white;
+    padding: 8px;
+    margin-bottom: 10px;
 }
 
 .right {
@@ -213,3 +193,67 @@
   transition: width .3s ease;
 }
 .footerLink:hover:after { width: 100%; }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+  }
+
+  .left {
+    width: 100%;
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title {
+    margin-top: 20px;
+    font-size: 50px;
+  }
+
+  .description {
+    font-size: 15px;
+    margin-top: 10px;
+    max-width: 240px;
+  }
+  /* Show App Store badge only on mobile */
+  .appStoreLink {
+    display: inline-block;
+  }
+
+  /* Hide phone images on mobile */
+  .right {
+    display: none;
+  }
+
+  /* Move footer links to top on mobile */
+  .footerLinks {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: auto;
+  }
+
+  .footerLink {
+    color: var(--color-darkerblue);
+  }
+
+  .footerLink:after {
+    background: var(--color-darkerblue);
+  }
+}
+
+/* Desktop: hide App Store badge, show QR code */
+@media (min-width: 769px) {
+  .appStoreLink {
+    display: none;
+  }
+
+  .qrCode {
+    display: block;
+  }
+}
