@@ -191,7 +191,6 @@
     justify-content: center;
     min-height: 100vh;
     min-height: 100dvh; /* Use dynamic viewport height on mobile */
-    height: 100%;
   }
 
   .wave {
