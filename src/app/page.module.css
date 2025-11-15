@@ -179,20 +179,10 @@
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  position: relative;
   opacity: 0.9;
   transition: opacity .25s;
 }
 .footerLink:hover { opacity: 1; }
-.footerLink:after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -4px;
-  width: 0; height: 2px;
-  background: #fff;
-  transition: width .3s ease;
-}
-.footerLink:hover:after { width: 100%; }
 
 /* Mobile styles */
 @media (max-width: 650px) {
@@ -206,7 +196,7 @@
 
   .wave {
     /* Ensure wave covers entire mobile viewport */
-    bottom: -40vmax;
+    bottom: 0;
     right: -50vmax;
     width: 180vmax;
     height: 120vmax;
@@ -254,10 +244,6 @@
 
   .footerLink {
     color: var(--color-darkerblue);
-  }
-
-  .footerLink:after {
-    background: var(--color-darkerblue);
   }
 }
 
